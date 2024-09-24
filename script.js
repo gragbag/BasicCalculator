@@ -104,6 +104,12 @@ numberButtons.forEach((button) => {
 	button.addEventListener("click", (e) => {
 		let btnId = e.target.id;
 
+		if (operator.length == 0 && i == 1) {
+			leftNumber = "";
+			display.innerText = leftNumber;
+			i = 0;
+		}
+
 		if (i == 0) {
 			addToLeft(btnId);
 		} else {
