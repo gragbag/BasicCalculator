@@ -88,15 +88,22 @@ const addToLeft = (num) => {
 	if (leftNumber.length >= lengthLimit) {
 		return;
 	}
-	leftNumber += num;
 
-	console.log(leftNumber);
+	if (leftNumber.length == 0 && num == 0) {
+		return;
+	}
+
+	leftNumber += num;
 
 	display.innerText = leftNumber;
 }
 
 const addToRight = (num) => {
 	if (rightNumber.length >= lengthLimit) {
+		return;
+	}
+
+	if (rightNumber.length == 0 && num == 0) {
 		return;
 	}
 
@@ -140,9 +147,15 @@ clearButton.addEventListener("click", clear);
 
 negateButton.addEventListener("click", () => {
 	if (i == 0) {
+		if (leftNumber.length == 0) {
+			return;
+		}
 		leftNumber *= -1;
 		display.innerText = leftNumber;
 	} else {
+		if (rightNumber.length == 0) {
+			return;
+		}
 		rightNumber *= -1;
 		display.innerText = rightNumber;
 	}
@@ -164,12 +177,14 @@ decimalButton.addEventListener("click", () => {
 
 backButton.addEventListener("click", () => {
 	if (i == 0) {
+		leftNumber = leftNumber.toString();
 		if (leftNumber.charAt(leftNumber.length - 1) == '.') {
 			decimalPoints = 0;
 		}
-		leftNumber = leftNumber.toString().substring(0, leftNumber.length - 1);
+		leftNumber = leftNumber.substring(0, leftNumber.length - 1);
 		display.innerText = leftNumber;
 	} else {
+		rightNumber = rightNumber.toString();
 		if (rightNumber.charAt(rightNumber.length - 1) == '.') {
 			decimalPoints = 0;
 		}
