@@ -58,8 +58,6 @@ const operate = (n1, n2, operator) => {
 			return multiply(n1, n2);
 		case('/'):
 			return divide(n1, n2);
-		default:
-			throw new Error("Invalid Operator");
 	}
 }
 
@@ -73,6 +71,8 @@ const enter = () => {
 	leftNumber = result;
 	rightNumber = "";
 	operator = "";
+	i = 0;
+	decimalPoints = 0;
 }
 
 const clear = () => {
@@ -81,14 +81,17 @@ const clear = () => {
 	display.innerText = "";
 	operator = "";
 	i = 0;
+	decimalPoints = 0;
 }
 
 const addToLeft = (num) => {
 	if (leftNumber.length >= lengthLimit) {
 		return;
 	}
-
 	leftNumber += num;
+
+	console.log(leftNumber);
+
 	display.innerText = leftNumber;
 }
 
@@ -161,16 +164,16 @@ decimalButton.addEventListener("click", () => {
 
 backButton.addEventListener("click", () => {
 	if (i == 0) {
-		leftNumber = leftNumber.substring(0, leftNumber.length - 1);
+		if (leftNumber.charAt(leftNumber.length - 1) == '.') {
+			decimalPoints = 0;
+		}
+		leftNumber = leftNumber.toString().substring(0, leftNumber.length - 1);
 		display.innerText = leftNumber;
 	} else {
+		if (rightNumber.charAt(rightNumber.length - 1) == '.') {
+			decimalPoints = 0;
+		}
 		rightNumber = rightNumber.substring(0, rightNumber.length - 1);
 		display.innerText = rightNumber;
 	}
 })
-
-
-
-
-
-
