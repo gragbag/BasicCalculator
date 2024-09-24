@@ -132,6 +132,9 @@ numberButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
 	button.addEventListener("click", (e) => {
+		if (leftNumber.length == 0 || leftNumber == '-') {
+			return;
+		}
 		i++;
 		decimalPoints = 0;
 		if (i == 2) {
