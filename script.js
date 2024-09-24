@@ -4,6 +4,7 @@ const enterButton = document.querySelector("#enter");
 const clearButton = document.querySelector("#clear");
 const negateButton = document.querySelector(".negate");
 const decimalButton = document.querySelector(".decimal")
+const backButton = document.querySelector("#backspace");
 const display = document.querySelector("#display");
 let expression = "";
 let leftNumber = "";
@@ -156,6 +157,16 @@ decimalButton.addEventListener("click", () => {
 	}
 
 	decimalPoints++;
+})
+
+backButton.addEventListener("click", () => {
+	if (i == 0) {
+		leftNumber = leftNumber.substring(0, leftNumber.length - 1);
+		display.innerText = leftNumber;
+	} else {
+		rightNumber = rightNumber.substring(0, rightNumber.length - 1);
+		display.innerText = rightNumber;
+	}
 })
 
 
