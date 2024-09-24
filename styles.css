@@ -32,11 +32,12 @@
 
 .numbers button {
 	flex: 0 0 30%;
+	background-color: cyan;
 }
 
-.negate, .decimal {
-	flex: 1;
+#negate, #decimal {
 	font-size: 18px;
+	background-color: teal;
 }
 
 .operators {
@@ -48,6 +49,7 @@
 
 .operators button {
 	font-size: 18px;
+	background-color: lightcoral;
 }
 
 button {
